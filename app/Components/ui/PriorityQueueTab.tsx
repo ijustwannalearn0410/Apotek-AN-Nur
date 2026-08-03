@@ -72,15 +72,15 @@ export default function PriorityQueueTab() {
       <div className="w-[300px] flex flex-col shadow-xl rounded-[2rem] overflow-hidden bg-[#0B3B82]">
         <div className="bg-[#0B3B82] text-white text-center py-8 px-4 border-b border-white/20">
           <p className="text-xl mb-1">sedang dilayani (Prioritas):</p>
-          <p className="text-2xl font-bold">No: E-{currentServing}</p>
+          <p className="text-2xl font-bold">No: {currentServing}</p>
         </div>
         <div className="bg-[#0B3B82] text-white text-center py-8 px-4 border-b border-white/20">
           <p className="text-xl mb-1">Terakhir Check in:</p>
-          <p className="text-2xl font-bold">No: E-{lastCheckIn}</p>
+          <p className="text-2xl font-bold">No: {lastCheckIn}</p>
         </div>
         <div className="bg-[#0B3B82] text-white text-center py-8 px-4">
           <p className="text-xl mb-1">Terakhir Belum<br/>Check in:</p>
-          <p className="text-2xl font-bold">No: E-{lastNotCheckIn}</p>
+          <p className="text-2xl font-bold">No: {lastNotCheckIn}</p>
         </div>
       </div>
     </>

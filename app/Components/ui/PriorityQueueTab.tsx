@@ -65,11 +65,17 @@ export default function PriorityQueueTab() {
             </div>
             <div className="w-2/3">
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">Alasan Prioritas</label>
-              <input
-                type="text" placeholder="Misal: Lansia, dll" required disabled={loading}
+              <select
+                required disabled={loading}
                 value={priorityReason} onChange={(e) => setPriorityReason(e.target.value)}
                 className="w-full bg-gray-50 border border-gray-200 text-gray-900 text-base rounded-xl py-3 px-5 focus:outline-none focus:ring-2 focus:ring-red-500 focus:bg-white transition-all"
-              />
+              >
+                <option value="" disabled>Pilih Alasan</option>
+                <option value="disabilitas">Disabilitas</option>
+                <option value="balita">Balita</option>
+                <option value="hamil">Hamil</option>
+                <option value="lansia">Lansia</option>
+              </select>
             </div>
           </div>
           <div>

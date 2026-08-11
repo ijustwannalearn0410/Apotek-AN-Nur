@@ -22,9 +22,9 @@ export default function UnifiedDashboard() {
       case "prioritas":
         return <PriorityQueueTab />;
       case "riwayat":
-       return <RiwayatTab />;
+        return <RiwayatTab />;
       case "akun":
-       // return <DataAkunTab />;
+      // return <DataAkunTab />;
       default:
         return <NormalQueueTab />;
     }
@@ -32,46 +32,61 @@ export default function UnifiedDashboard() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-[#E5EAEF] font-serif flex flex-col">
-        
+      <div className="min-h-screen bg-gray-50 font-sans flex flex-col text-gray-800">
+
         {/* TOP NAVBAR */}
-        <nav className="bg-[#0B3B82] text-white flex justify-between items-stretch shadow-md">
-          <div className="flex">
-            <button 
-              className={`px-8 py-4 text-xl font-semibold border-r border-white/30 transition-colors ${activeTab === "biasa" ? "bg-[#082b5e]" : "hover:bg-[#082b5e]"}`}
-              onClick={() => setActiveTab("biasa")}
-            >
-              Antrian<br/>Biasa
-            </button>
-            <button 
-              className={`px-8 py-4 text-xl font-semibold border-r border-white/30 transition-colors ${activeTab === "prioritas" ? "bg-[#082b5e]" : "hover:bg-[#082b5e]"}`}
-              onClick={() => setActiveTab("prioritas")}
-            >
-              Antrian<br/>Prioritas
-            </button>
-            <button 
-              className={`px-8 py-4 text-xl font-semibold border-r border-white/30 transition-colors flex items-center ${activeTab === "riwayat" ? "bg-[#082b5e]" : "hover:bg-[#082b5e]"}`}
-              onClick={() => setActiveTab("riwayat")}
-            >
-              Riwayat
-            </button>
-            <button 
-              className={`px-8 py-4 text-xl font-semibold border-r border-white/30 transition-colors flex items-center ${activeTab === "akun" ? "bg-[#082b5e]" : "hover:bg-[#082b5e]"}`}
-              onClick={() => setActiveTab("akun")}
-            >
-              Data Akun
-            </button>
-          </div>
-          
-          <div className="flex items-center px-8 text-xl font-semibold uppercase hover:text-gray-300">
-            <LogoutButton />
+        <nav className="bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100 sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="flex justify-between h-20">
+
+              {/* Navigation Tabs */}
+              <div className="flex space-x-2 sm:space-x-8">
+                <button
+                  className={`inline-flex items-center px-4 pt-1 border-b-2 text-sm md:text-base font-semibold transition-colors duration-200 ${activeTab === "biasa"
+                    ? "border-blue-600 text-blue-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    }`}
+                  onClick={() => setActiveTab("biasa")}
+                >
+                  Antrian Biasa
+                </button>
+                <button
+                  className={`inline-flex items-center px-4 pt-1 border-b-2 text-sm md:text-base font-semibold transition-colors duration-200 ${activeTab === "prioritas"
+                    ? "border-blue-600 text-blue-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    }`}
+                  onClick={() => setActiveTab("prioritas")}
+                >
+                  Antrian Prioritas
+                </button>
+                <button
+                  className={`inline-flex items-center px-4 pt-1 border-b-2 text-sm md:text-base font-semibold transition-colors duration-200 ${activeTab === "riwayat"
+                    ? "border-blue-600 text-blue-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    }`}
+                  onClick={() => setActiveTab("riwayat")}
+                >
+                  Riwayat
+                </button>
+
+              </div>
+
+              {/* Logout Button */}
+              <div className="flex items-center">
+                <div className="text-gray-600 hover:text-red-600 transition-colors bg-gray-100 hover:bg-red-50 rounded-xl px-4 py-2 font-medium cursor-pointer">
+                  <LogoutButton />
+                </div>
+              </div>
+
+            </div>
           </div>
         </nav>
 
         {/* MAIN CONTENT AREA */}
-        {/* Dashboard tidak peduli apa isi form/status, dia hanya merender Tab yang terpilih */}
-        <main className="flex-grow flex justify-center items-start gap-10 p-12 mt-4 transition-all duration-300">
-          {renderContent()}
+        <main className="flex-grow flex justify-center items-start w-full max-w-7xl mx-auto p-6 lg:p-10 transition-all duration-300">
+          <div className="w-full">
+            {renderContent()}
+          </div>
         </main>
 
       </div>

@@ -10,7 +10,7 @@ export default function NormalQueueTab() {
   const [patientName, setPatientName] = useState("");
   const [patientAge, setPatientAge] = useState("");
   const [complaint, setComplaint] = useState("");
-  
+
   const { handleJoin, loading } = useQueue();
 
   // State Status Antrian (Hanya relevan di halaman antrian)
@@ -33,53 +33,65 @@ export default function NormalQueueTab() {
   };
 
   return (
-    <>
+    <div className="flex flex-col lg:flex-row gap-8 justify-center items-start w-full font-sans">
       {/* KOLOM KIRI: Form Antrian Biasa */}
-      <div className="bg-[#0B3B82] rounded-[2rem] w-[600px] py-12 px-10 shadow-xl flex flex-col items-center min-h-[500px]">
-        <h2 className="text-white text-3xl font-bold mb-10 tracking-widest uppercase">
-          DATA PASIEN
-        </h2>
-        
-        <form onSubmit={onSubmit} className="w-full flex flex-col gap-8 items-center">
-          <input
-            type="text" placeholder="Nama" required disabled={loading}
-            value={patientName} onChange={(e) => setPatientName(e.target.value)}
-            className="w-full bg-[#E5E7EB] text-center text-gray-800 text-lg rounded-full py-3 px-6 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="number" placeholder="Umur" required disabled={loading}
-            value={patientAge} onChange={(e) => setPatientAge(e.target.value)}
-            className="w-full bg-[#E5E7EB] text-center text-gray-800 text-lg rounded-full py-3 px-6 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="text" placeholder="Gejala/keluhan" required disabled={loading}
-            value={complaint} onChange={(e) => setComplaint(e.target.value)}
-            className="w-full bg-[#E5E7EB] text-center text-gray-800 text-lg rounded-full py-3 px-6 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+      <div className="bg-white rounded-3xl w-full max-w-xl p-8 lg:p-10 shadow-xl shadow-gray-200/50 border border-gray-100 flex flex-col">
+        <div className="mb-8 text-center">
+          <h2 className="text-gray-900 text-2xl font-extrabold tracking-tight uppercase">
+            Data Pasien Umum
+          </h2>
+          <p className="text-gray-500 text-sm mt-2">Lengkapi data untuk mengambil nomor antrian biasa</p>
+        </div>
+
+        <form onSubmit={onSubmit} className="w-full flex flex-col gap-5">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Nama Lengkap</label>
+            <input
+              type="text" placeholder="Masukkan nama pasien" required disabled={loading}
+              value={patientName} onChange={(e) => setPatientName(e.target.value)}
+              className="w-full bg-gray-50 border border-gray-200 text-gray-900 text-base rounded-xl py-3 px-5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Umur (Tahun)</label>
+            <input
+              type="number" placeholder="Masukkan umur" required disabled={loading}
+              value={patientAge} onChange={(e) => setPatientAge(e.target.value)}
+              className="w-full bg-gray-50 border border-gray-200 text-gray-900 text-base rounded-xl py-3 px-5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Gejala/Keluhan</label>
+            <input
+              type="text" placeholder="Jelaskan keluhan singkat" required disabled={loading}
+              value={complaint} onChange={(e) => setComplaint(e.target.value)}
+              className="w-full bg-gray-50 border border-gray-200 text-gray-900 text-base rounded-xl py-3 px-5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all"
+            />
+          </div>
           <button
             type="submit" disabled={loading}
-            className="mt-6 bg-[#E5E7EB] text-black text-2xl font-bold rounded-full py-4 px-12 hover:bg-gray-300 transition-colors shadow-lg disabled:opacity-50"
+            className="mt-6 w-full bg-blue-600 text-white text-lg font-bold rounded-xl py-4 hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 disabled:opacity-70 disabled:shadow-none"
           >
             {loading ? "Memproses..." : "Ambil Nomor Antrian"}
           </button>
         </form>
       </div>
 
-      {/* KOLOM KANAN: Status Informasi Real-time */}
-      <div className="w-[300px] flex flex-col shadow-xl rounded-[2rem] overflow-hidden bg-[#0B3B82]">
-        <div className="bg-[#0B3B82] text-white text-center py-8 px-4 border-b border-white/20">
-          <p className="text-xl mb-1">sedang dilayani:</p>
-          <p className="text-2xl font-bold">No: {currentServing}</p>
+
+      {/* <div className="w-full max-w-sm flex flex-col shadow-xl shadow-gray-200/50 rounded-3xl overflow-hidden bg-white border border-gray-100 sticky top-28">
+        <div className="bg-blue-600 text-white text-center py-6 px-6 shadow-sm">
+          <p className="text-blue-100 text-sm font-medium mb-1 uppercase tracking-wider">Sedang Dilayani</p>
+          <p className="text-5xl font-extrabold drop-shadow-md">{currentServing}</p>
         </div>
-        <div className="bg-[#0B3B82] text-white text-center py-8 px-4 border-b border-white/20">
-          <p className="text-xl mb-1">Terakhir Check in:</p>
-          <p className="text-2xl font-bold">No: {lastCheckIn}</p>
+        <div className="text-center py-6 px-6 border-b border-gray-100 bg-gray-50/50">
+          <p className="text-gray-500 text-sm font-medium mb-1">Terakhir Check-in</p>
+          <p className="text-2xl font-bold text-gray-800">No. {lastCheckIn}</p>
         </div>
-        <div className="bg-[#0B3B82] text-white text-center py-8 px-4">
-          <p className="text-xl mb-1">Terakhir Belum<br/>Check in:</p>
-          <p className="text-2xl font-bold">No: {lastNotCheckIn}</p>
+        <div className="text-center py-6 px-6 bg-gray-50/50">
+          <p className="text-gray-500 text-sm font-medium mb-1">Terakhir Belum Check-in</p>
+          <p className="text-2xl font-bold text-gray-800">No. {lastNotCheckIn}</p>
         </div>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 }

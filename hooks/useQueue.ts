@@ -4,6 +4,7 @@ export interface PatientData {
   patientName: string;
   patientAge: string;
   complaint: string;
+  priorityReason?: string;
 }
 export const useQueue = () => {
   const [loading, setLoading] = useState(false);
@@ -38,7 +39,8 @@ export const useQueue = () => {
           uid: userId,
           patientName: patientData.patientName,
           patientAge: patientData.patientAge,
-          complaint: patientData.complaint
+          complaint: patientData.complaint,
+          priorityReason: patientData.priorityReason ?? "",
         }),
       });
       //Server Response Checker

@@ -10,6 +10,7 @@ export interface Queue {
   age: string;           
   complaint: string;     
   phone: string;
+  priorityReason?: string;
   queueNumber: number;
   status: "registered" | "waiting" | "in-progress" | "done"; 
   type: "normal" | "emergency"; 
@@ -20,6 +21,7 @@ export interface PatientData {
   patientName: string;
   patientAge: string;
   complaint: string;
+  priorityReason?: string;
 }
 //main function
 export const joinQueue = async (type: "normal" | "emergency" = "normal", 
@@ -66,7 +68,8 @@ patientData: PatientData) => {
     name: patientData.patientName,    
     age: patientData.patientAge,      
     complaint: patientData.complaint, 
-    phone: userData.phone,            
+    phone: userData.phone ?? "",      // fallback agar tidak undefined
+    priorityReason: patientData.priorityReason ?? "",
     queueNumber: nextNumber,
     status: "registered",            
     type: type,                      

@@ -37,19 +37,19 @@ export default function AdminPortalPage() {
             </div>
 
             {/* Container untuk pilihan peran */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-5xl mx-auto">
               
               {/* Kartu Pilihan 1: Resepsionis */}
               <div 
                 onClick={() => router.push("/admins/Receptionist")}
-                className="group cursor-pointer bg-white rounded-3xl p-10 shadow-xl shadow-green-100/50 border border-green-100 hover:border-green-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-200 flex flex-col items-center text-center relative overflow-hidden"
+                className="group cursor-pointer bg-white rounded-3xl p-8 shadow-xl shadow-green-100/50 border border-green-100 hover:border-green-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-200 flex flex-col items-center text-center relative overflow-hidden"
               >
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-green-500 to-emerald-400"></div>
-                <div className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 text-5xl">
+                <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 text-4xl">
                   👩‍💻
                 </div>
-                <h3 className="text-green-600 font-bold text-2xl mb-4">Meja Resepsionis</h3>
-                <p className="text-gray-500 leading-relaxed">
+                <h3 className="text-green-600 font-bold text-xl mb-3">Meja Resepsionis</h3>
+                <p className="text-gray-500 leading-relaxed text-sm">
                   Pantau pendaftaran, cari pasien, dan lakukan proses <strong className="text-gray-700">Check-In</strong> kehadiran.
                 </p>
               </div>
@@ -57,15 +57,30 @@ export default function AdminPortalPage() {
               {/* Kartu Pilihan 2: Dokter */}
               <div 
                 onClick={() => router.push("/admins/doctor")}
-                className="group cursor-pointer bg-white rounded-3xl p-10 shadow-xl shadow-blue-100/50 border border-blue-100 hover:border-blue-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-200 flex flex-col items-center text-center relative overflow-hidden"
+                className="group cursor-pointer bg-white rounded-3xl p-8 shadow-xl shadow-blue-100/50 border border-blue-100 hover:border-blue-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-200 flex flex-col items-center text-center relative overflow-hidden"
               >
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400"></div>
-                <div className="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 text-5xl">
+                <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 text-4xl">
                   🩺
                 </div>
-                <h3 className="text-blue-600 font-bold text-2xl mb-4">Ruang Dokter</h3>
-                <p className="text-gray-500 leading-relaxed">
+                <h3 className="text-blue-600 font-bold text-xl mb-3">Ruang Dokter</h3>
+                <p className="text-gray-500 leading-relaxed text-sm">
                   Lihat riwayat keluhan medis pasien dan panggil nomor antrean selanjutnya (<strong className="text-gray-700">Call Next</strong>).
+                </p>
+              </div>
+
+              {/* Kartu Pilihan 3: Riwayat Perawatan */}
+              <div 
+                onClick={() => router.push("/Dashboards/history/admin")}
+                className="group cursor-pointer bg-white rounded-3xl p-8 shadow-xl shadow-violet-100/50 border border-violet-100 hover:border-violet-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-200 flex flex-col items-center text-center relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-violet-500 to-purple-400"></div>
+                <div className="w-20 h-20 bg-violet-50 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 text-4xl">
+                  📋
+                </div>
+                <h3 className="text-violet-600 font-bold text-xl mb-3">Riwayat Perawatan</h3>
+                <p className="text-gray-500 leading-relaxed text-sm">
+                  Lihat laporan dan rekap seluruh pasien yang telah selesai dilayani berdasarkan <strong className="text-gray-700">tanggal</strong>.
                 </p>
               </div>
 
